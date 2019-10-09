@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float slideTime;
     public bool jumping = false;
     public Animator playerAnim; //player body animator
+    public float incrementGrowth; 
 
     public Vector3 movement;
     public GameObject PlayerBody;
@@ -57,6 +58,8 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("slide");
             StartCoroutine(Slide());
         }
+        //speed increase
+        speed += Time.deltaTime * incrementGrowth;
     }
 
 
