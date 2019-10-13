@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -10,7 +11,10 @@ public class PlayerMovement : MonoBehaviour
     public float slideTime;
     public bool jumping = false;
     public Animator playerAnim; //player body animator
-    public float incrementGrowth; 
+    public float incrementGrowth;
+
+    public SceneManager sceneManager;
+    public float exitTime; //the time between player death and "gameover scene"
 
     public Vector3 movement;
     public GameObject PlayerBody;
@@ -24,6 +28,14 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(slideTime);
         playerColl.SetSlideFalse();
         PlayerBody.transform.localScale += new Vector3(0, 0.3f, 0);
+
+    }
+
+    IEnumerator GameOver()
+    {
+        PlayerBody.GetComponent<MeshRenderer>().enabled = false;
+        yield return new WaitForSeconds(exitTime);
+        SceneManager.LoadScene(1);
 
     }
 
@@ -69,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
     {
         speed = 0;
         Debug.Log("Osuttiin seinään");
+        StartCoroutine(GameOver());
     }
     public void JumpLanded(PlayerCollisionDetection childScript)
     {
