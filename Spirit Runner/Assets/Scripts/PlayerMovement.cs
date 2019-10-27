@@ -33,7 +33,6 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator GameOver()
     {
-        PlayerBody.GetComponent<MeshRenderer>().enabled = false;
         yield return new WaitForSeconds(exitTime);
         SceneManager.LoadScene(1);
 
@@ -45,12 +44,19 @@ public class PlayerMovement : MonoBehaviour
         movement = new Vector3(0,0,1);
         PlayerRigidBody = PlayerBody.GetComponent<Rigidbody>();
         playerColl = PlayerBody.GetComponent<PlayerCollisionDetection>();
-        playerAnim = PlayerBody.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (PlayerRigidBody.velocity.y>=0)
+        {
+            playerAnim.SetBool("Going_up", true);
+        }
+        if (PlayerRigidBody.velocity.y <= 0)
+        {
+            playerAnim.SetBool("Going_up", false);
+        }
         //constant forward movement
         if (jumping==false)
         {
@@ -59,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
         //jump
         if (Input.GetKeyDown(KeyCode.Space)&&jumping==false)
         {
+            playerAnim.SetTrigger("Jump_start");
             jumping = true;
             Debug.Log("Hypättiin");
             PlayerRigidBody.AddForce(Vector3.up * jumpForceUp, ForceMode.Impulse);
@@ -87,5 +94,6 @@ public class PlayerMovement : MonoBehaviour
     {
         Debug.Log("Osuttiin maahan");
         jumping = false;
+        playerAnim.ResetTrigger("Jump_start");
     }
 }
