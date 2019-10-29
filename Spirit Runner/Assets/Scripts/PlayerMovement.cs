@@ -71,6 +71,14 @@ public class PlayerMovement : MonoBehaviour
             PlayerRigidBody.AddForce(Vector3.up * jumpForceUp, ForceMode.Impulse);
             PlayerRigidBody.AddForce(Vector3.forward * jumpForceFwd, ForceMode.Impulse);
         }
+        if (Input.GetKeyDown("d"))
+        {
+            playerAnim.SetTrigger("Strafe");
+        }
+        if (Input.GetKeyDown("a"))
+        {
+            playerAnim.SetTrigger("Strafe_Left");
+        }
         //slide
         if (Input.GetKeyDown("s") && jumping == false)
         {
