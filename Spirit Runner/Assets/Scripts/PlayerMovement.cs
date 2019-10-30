@@ -10,7 +10,15 @@ public class PlayerMovement : MonoBehaviour
     public float slideTime;
     public bool jumping = false;
     public Animator playerAnim; //player body animator
-    public float incrementGrowth; 
+    public float incrementGrowth;
+
+    public bool flying;
+    public float flyTime;
+    public float flyHeight;
+    public float takeOffSpeed;
+    public bool hawkPicked;
+    public Vector3 flyPos;
+    
 
     public Vector3 movement;
     public GameObject PlayerBody;
@@ -27,6 +35,26 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    IEnumerator Fly()
+    {
+        
+        flying = true;
+        
+        flyPos = new Vector3(transform.position.x, transform.position.y + flyHeight , transform.position.z + 1);
+        PlayerRigidBody.useGravity = false;
+        
+        while (transform.position.y < flyPos.y)
+        {
+            transform.Translate(Vector3.up*takeOffSpeed*Time.deltaTime);
+            yield return new WaitForEndOfFrame();
+        }
+        yield return new WaitForSeconds(flyTime);
+        PlayerRigidBody.useGravity = true;
+        flying = false;
+        
+        
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
         PlayerRigidBody = PlayerBody.GetComponent<Rigidbody>();
         playerColl = PlayerBody.GetComponent<PlayerCollisionDetection>();
         playerAnim = PlayerBody.GetComponent<Animator>();
+        
     }
 
     // Update is called once per frame
@@ -45,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
             transform.Translate(movement * speed * Time.deltaTime);
         }
         //jump
-        if (Input.GetKeyDown(KeyCode.Space)&&jumping==false)
+        if (Input.GetKeyDown(KeyCode.Space)&&jumping==false && flying == false)
         {
             jumping = true;
             Debug.Log("Hypättiin");
@@ -53,10 +82,19 @@ public class PlayerMovement : MonoBehaviour
             PlayerRigidBody.AddForce(Vector3.forward * jumpForceFwd, ForceMode.Impulse);
         }
         //slide
-        if (Input.GetKeyDown("s") && jumping == false)
+        if (Input.GetKeyDown("s") && jumping == false && flying == false)
         {
             Debug.Log("slide");
             StartCoroutine(Slide());
+        }
+        if(hawkPicked == true)
+        {
+            if (flying == false )
+            {
+                StartCoroutine(Fly());
+                hawkPicked = false;
+            }
+            
         }
         //speed increase
         speed += Time.deltaTime * incrementGrowth;

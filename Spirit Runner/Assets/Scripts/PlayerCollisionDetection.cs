@@ -60,10 +60,7 @@ public class PlayerCollisionDetection : MonoBehaviour
         if (collision.other.CompareTag("Collectible"))                                          // if tag is collectible
         {
             Destroy(collision.gameObject, 0);                                                   //destroys collectible
-            if (transform.parent.GetComponent<ShapeShifting>().ShapeOn == true)                  //if any shape is active                             
-            {
-                transform.parent.GetComponent<ShapeShifting>().collectiblePicked = true;         //collectible is picked, value is used in shapeshifting.cs
-            }
+            transform.parent.GetComponent<PlayerMovement>().hawkPicked = true;
         }
     }
 }

@@ -9,65 +9,107 @@ public class ShapeShifting : MonoBehaviour
     public Material materialBlue;
     public Material materialBlack;
     public Material normalMaterial;
-    public float timeLimit;
+    public float redtimeLimit;
+    public float bluetimeLimit;
+    public float blacktimeLimit;
+    public float collectibleTime;
+    public float redRecharge;
+    public float blueRecharge;
+    public float blackRecharge;
+    public float cooldown;
 
     public bool RedOn;
+    public bool redFinished;
+    public bool blueFinished;
     public bool BlueOn;
     public bool BlackOn;
     public bool ShapeOn;
     public bool collectiblePicked;
+
+    private IEnumerator redShape;
+    private IEnumerator blueShape;
   
     // Start is called before the first frame update
     void Start()
     {
+       
         
+        redFinished = true;
+        blueFinished = true;
+        RedOn = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("1") && RedOn == false && ShapeOn == false)                   //if key is pressed and no other shapes are on starts coroutine = shape
+        if (Input.GetKeyDown("1") && RedOn == false && redFinished == true)                   //if key is pressed and no other shapes are on starts coroutine = shape
         {
-            StartCoroutine(ToRedShape());
+            if (BlueOn == true)
+            {
+                StopCoroutine(blueShape);
+                BlueOn = false;
+            }
+            redShape = ToRedShape();
+            StartCoroutine(redShape);
+            StartCoroutine(CoolDown("red"));
+
         }
-        else if(Input.GetKeyDown("2") && BlueOn == false && ShapeOn == false)               //if key is pressed and no other shapes are on starts coroutine = shape
+        else if(Input.GetKeyDown("2") && BlueOn == false && blueFinished == true)               //if key is pressed and no other shapes are on starts coroutine = shape
         {
-            StartCoroutine(ToBlueShape());
+            if (RedOn == true)
+            {
+                StopCoroutine(redShape);
+                RedOn = false;
+            }
+            blueShape = ToBlueShape();
+            StartCoroutine(blueShape);
+            StartCoroutine(CoolDown("blue"));
         }
-        else if (Input.GetKeyDown("3") && BlackOn == false && ShapeOn == false)             //if key is pressed and no other shapes are on starts coroutine = shape
-        {
-            StartCoroutine(ToBlackShape());
-        }
+        //else if (Input.GetKeyDown("3") && BlackOn == false)             //if key is pressed and no other shapes are on starts coroutine = shape
+        //{
+        //    StartCoroutine(ToBlackShape());
+        //}
     }
+
     IEnumerator ToRedShape()                                                                //coroutine for shape(names wil change)
     {
         RedOn = true;                                                                       //red shape activated
-        ShapeOn = true;                                                                     //shape activated
+        ShapeOn = true;
+        redFinished = false;
         player.material = materialRed;                                                      //sets player objects material to material red
-        yield return new WaitForSeconds(timeLimit);                                         //waits certain amount of time
+        yield return new WaitForSeconds(redtimeLimit);                                      //waits certain amount of time
         if (collectiblePicked == true)                                                      //if collectible is picked up
         {
-            yield return new WaitForSeconds(1);                                             // adds exra second to shape duration
+            redtimeLimit += collectibleTime;
+            yield return new WaitForSeconds(collectibleTime);                               // adds exra second to shape duration 
             collectiblePicked = false;                                                      
         }
-        player.material = normalMaterial;                                                   // material back to normal, normal shape
-        ShapeOn = false;                                                                    // no shapes active
-        RedOn = false;                                                                      //red shape not active
+        if (BlueOn == false && BlackOn == false)
+        {
+            player.material = normalMaterial;                                                   // material back to normal, normal shape
+            ShapeOn = false;
+        }
+        RedOn = false;
         
     }
     IEnumerator ToBlueShape()
     {
         BlueOn = true;
         ShapeOn = true;
+        blueFinished = false;
         player.material = materialBlue;
-        yield return new WaitForSeconds(timeLimit);                                         //same as the above just different colour
+        yield return new WaitForSeconds(bluetimeLimit);                                         //same as the above just different colour
         if(collectiblePicked == true)
         {
-            yield return new WaitForSeconds(1);
+            bluetimeLimit += collectibleTime;
+            yield return new WaitForSeconds(collectibleTime);
             collectiblePicked = false;
         }
-        player.material = normalMaterial;
-        ShapeOn = false;
+        if (RedOn == false && BlackOn == false)
+        {
+            player.material = normalMaterial;
+            ShapeOn = false;
+        }
         BlueOn = false;
         
 
@@ -77,15 +119,27 @@ public class ShapeShifting : MonoBehaviour
         BlackOn = true;
         ShapeOn = true;
         player.material = materialBlack;
-        yield return new WaitForSeconds(timeLimit);                                        //same as red different colour
+        yield return new WaitForSeconds(blacktimeLimit);                                        //same as red different colour
         if (collectiblePicked == true)
         {
-            yield return new WaitForSeconds(1);
+            blacktimeLimit += collectibleTime;
+            yield return new WaitForSeconds(collectibleTime);
+            
             collectiblePicked = false;
         }
         player.material = normalMaterial;
         ShapeOn = false;
         BlackOn = false;
       
+    }
+    IEnumerator CoolDown(string _color)
+    {
+
+        yield return new WaitForSeconds(cooldown);
+        if (_color == "red")
+            redFinished = true;
+        if (_color == "blue")
+            blueFinished = true;
+
     }
 }
