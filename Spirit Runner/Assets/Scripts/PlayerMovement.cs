@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     public float takeOffSpeed;
     public bool hawkPicked;
     public Vector3 flyPos;
+    public Vector3 landPos;
     
 
     public Vector3 movement;
@@ -40,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
         
         flying = true;
         
-        flyPos = new Vector3(transform.position.x, transform.position.y + flyHeight , transform.position.z + 1);
+        flyPos = new Vector3(transform.position.x, transform.position.y + flyHeight , transform.position.z);
         PlayerRigidBody.useGravity = false;
         
         while (transform.position.y < flyPos.y)
@@ -49,6 +50,12 @@ public class PlayerMovement : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         yield return new WaitForSeconds(flyTime);
+        landPos = new Vector3(transform.position.x, transform.position.y - flyHeight, transform.position.z);
+        while (transform.position.y > landPos.y)
+        {
+            transform.Translate(Vector3.down * takeOffSpeed * Time.deltaTime);
+            yield return new WaitForEndOfFrame();
+        }
         PlayerRigidBody.useGravity = true;
         flying = false;
         
@@ -62,6 +69,7 @@ public class PlayerMovement : MonoBehaviour
         PlayerRigidBody = PlayerBody.GetComponent<Rigidbody>();
         playerColl = PlayerBody.GetComponent<PlayerCollisionDetection>();
         playerAnim = PlayerBody.GetComponent<Animator>();
+        hawkPicked = false;
         
     }
 
