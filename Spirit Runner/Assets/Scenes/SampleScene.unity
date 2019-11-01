@@ -722,7 +722,7 @@ MonoBehaviour:
   playerAnim: {fileID: 0}
   incrementGrowth: 0
   flying: 0
-  flyTime: 4
+  flyTime: 1
   flyHeight: 3
   takeOffSpeed: 4
   hawkPicked: 0
