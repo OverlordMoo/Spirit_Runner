@@ -15,6 +15,7 @@ MonoBehaviour:
   m_PixelRect:
     serializedVersion: 2
     x: 0
+<<<<<<< HEAD
     y: 43
     width: 1280
     height: 647
@@ -22,6 +23,15 @@ MonoBehaviour:
   m_Title: 
   m_RootView: {fileID: 9}
   m_MinSize: {x: 950, y: 300}
+=======
+    y: 43.2
+    width: 1536
+    height: 780.8
+  m_ShowMode: 4
+  m_Title: 
+  m_RootView: {fileID: 6}
+  m_MinSize: {x: 950, y: 544}
+>>>>>>> LeeviBranch
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -119,6 +129,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 30
+<<<<<<< HEAD
     width: 1280
     height: 597
   m_MinSize: {x: 887, y: 494}
@@ -126,6 +137,15 @@ MonoBehaviour:
   vertical: 0
   controlID: 181
 --- !u!114 &6
+=======
+    width: 1536
+    height: 731
+  m_MinSize: {x: 679, y: 494}
+  m_MaxSize: {x: 14002, y: 14044}
+  vertical: 0
+  controlID: 53
+--- !u!114 &3
+>>>>>>> LeeviBranch
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,6 +160,7 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 934
     y: 0
     width: 346
@@ -147,6 +168,15 @@ MonoBehaviour:
   m_MinSize: {x: 277, y: 72}
   m_MaxSize: {x: 4002, y: 4022}
   m_ActualView: {fileID: 17}
+=======
+    x: 1224
+    y: 0
+    width: 312
+    height: 731
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 14}
+>>>>>>> LeeviBranch
   m_Panes:
   - {fileID: 17}
   m_Selected: 0
@@ -168,11 +198,19 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
     width: 253
     height: 269
   m_MinSize: {x: 202, y: 222}
   m_MaxSize: {x: 4002, y: 4022}
   m_ActualView: {fileID: 18}
+=======
+    width: 303
+    height: 442
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 15}
+>>>>>>> LeeviBranch
   m_Panes:
   - {fileID: 18}
   m_Selected: 0
@@ -193,6 +231,7 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
+<<<<<<< HEAD
     y: 0
     width: 623
     height: 328
@@ -204,6 +243,20 @@ MonoBehaviour:
   m_Selected: 0
   m_LastSelected: 0
 --- !u!114 &9
+=======
+    y: 442
+    width: 1224
+    height: 289
+  m_MinSize: {x: 232, y: 272}
+  m_MaxSize: {x: 10002, y: 10022}
+  m_ActualView: {fileID: 13}
+  m_Panes:
+  - {fileID: 13}
+  - {fileID: 18}
+  m_Selected: 0
+  m_LastSelected: 1
+--- !u!114 &6
+>>>>>>> LeeviBranch
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -223,8 +276,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
     width: 1280
     height: 647
+=======
+    width: 1536
+    height: 781
+>>>>>>> LeeviBranch
   m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &10
@@ -244,7 +302,11 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
     width: 1280
+=======
+    width: 1536
+>>>>>>> LeeviBranch
     height: 30
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
@@ -265,8 +327,13 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
+<<<<<<< HEAD
     y: 627
     width: 1280
+=======
+    y: 761
+    width: 1536
+>>>>>>> LeeviBranch
     height: 20
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
@@ -289,6 +356,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
     width: 934
     height: 597
   m_MinSize: {x: 610, y: 494}
@@ -296,6 +364,15 @@ MonoBehaviour:
   vertical: 1
   controlID: 144
 --- !u!114 &13
+=======
+    width: 1224
+    height: 731
+  m_MinSize: {x: 404, y: 494}
+  m_MaxSize: {x: 10002, y: 14044}
+  vertical: 1
+  controlID: 54
+--- !u!114 &10
+>>>>>>> LeeviBranch
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -315,6 +392,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
     width: 934
     height: 269
   m_MinSize: {x: 610, y: 222}
@@ -322,6 +400,15 @@ MonoBehaviour:
   vertical: 0
   controlID: 79
 --- !u!114 &14
+=======
+    width: 1224
+    height: 442
+  m_MinSize: {x: 404, y: 222}
+  m_MaxSize: {x: 8004, y: 4022}
+  vertical: 0
+  controlID: 55
+--- !u!114 &11
+>>>>>>> LeeviBranch
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -336,10 +423,17 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 253
     y: 0
     width: 421
     height: 269
+=======
+    x: 303
+    y: 0
+    width: 921
+    height: 442
+>>>>>>> LeeviBranch
   m_MinSize: {x: 204, y: 222}
   m_MaxSize: {x: 4004, y: 4022}
   m_ActualView: {fileID: 19}
@@ -396,9 +490,15 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
+<<<<<<< HEAD
     y: 342
     width: 623
     height: 309
+=======
+    y: 515.2
+    width: 1224
+    height: 270
+>>>>>>> LeeviBranch
   m_ViewDataDictionary: {fileID: 0}
   m_SearchFilter:
     m_NameFilter: 
@@ -413,6 +513,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
+<<<<<<< HEAD
     - Assets/Scripts
   m_ViewMode: 1
   m_StartGridSize: 64
@@ -420,13 +521,28 @@ MonoBehaviour:
   - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Unity\Spirit_Runner\Spirit Runner
+=======
+    - Assets/Materials
+  m_ViewMode: 1
+  m_StartGridSize: 64
+  m_LastFolders:
+  - Assets/Materials
+  m_LastFoldersGridSize: -1
+  m_LastProjectPath: C:\Users\leevi\Documents\GitHub\Spirit_Runner\Spirit Runner
+>>>>>>> LeeviBranch
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
+<<<<<<< HEAD
     m_SelectedIDs: 20380000
     m_LastClickedID: 14368
     m_ExpandedIDs: 00000000ca33000000ca9a3b
+=======
+    m_SelectedIDs: 3e360000
+    m_LastClickedID: 13886
+    m_ExpandedIDs: 00000000cc3300002635000000ca9a3b
+>>>>>>> LeeviBranch
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -454,7 +570,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< HEAD
     m_ExpandedIDs: 00000000ca330000
+=======
+    m_ExpandedIDs: 00000000cc330000
+>>>>>>> LeeviBranch
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -481,7 +601,11 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
+<<<<<<< HEAD
     m_HadKeyboardFocusLastEvent: 0
+=======
+    m_HadKeyboardFocusLastEvent: 1
+>>>>>>> LeeviBranch
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -531,10 +655,17 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 934
     y: 73
     width: 344
     height: 578
+=======
+    x: 1224
+    y: 73.6
+    width: 310
+    height: 712
+>>>>>>> LeeviBranch
   m_ViewDataDictionary: {fileID: 0}
   m_OpenAddComponentMenu: 0
   m_ObjectsLockedBeforeSerialization: []
@@ -570,16 +701,28 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
+<<<<<<< HEAD
     y: 73
     width: 253
     height: 250
+=======
+    y: 73.6
+    width: 303
+    height: 423
+>>>>>>> LeeviBranch
   m_ViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
+<<<<<<< HEAD
       m_SelectedIDs: b83d0000
       m_LastClickedID: 15800
       m_ExpandedIDs: 2afbffff
+=======
+      m_SelectedIDs: 8ef1ffff
+      m_LastClickedID: 0
+      m_ExpandedIDs: 74faffffd43d0000d83d0000
+>>>>>>> LeeviBranch
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -624,10 +767,17 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 253
     y: 73
     width: 419
     height: 250
+=======
+    x: 303.2
+    y: 73.6
+    width: 919
+    height: 423
+>>>>>>> LeeviBranch
   m_ViewDataDictionary: {fileID: 0}
   m_ShowContextualTools: 0
   m_WindowGUID: 5133e995bc1f2da4c80db48c42247d8a
@@ -639,9 +789,15 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
+<<<<<<< HEAD
     m_Target: {x: 31.390429, y: -14.02737, z: 3.2155323}
     speed: 2
     m_Value: {x: 31.390429, y: -14.02737, z: 3.2155323}
+=======
+    m_Target: {x: -3.505096, y: -2.4651113, z: 1.319431}
+    speed: 2
+    m_Value: {x: -3.505096, y: -2.4651113, z: 1.319431}
+>>>>>>> LeeviBranch
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -670,13 +826,19 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.21065202, y: 0.1494777, z: -0.032612473, w: -0.96551466}
+    m_Target: {x: -0.27277908, y: 0.3793638, z: -0.118103676, w: -0.8762006}
     speed: 2
-    m_Value: {x: -0.21065202, y: 0.1494777, z: -0.032612473, w: -0.96551466}
+    m_Value: {x: -0.27277893, y: 0.37936357, z: -0.11810361, w: -0.8762001}
   m_Size:
+<<<<<<< HEAD
     m_Target: 127.46597
     speed: 2
     m_Value: 127.46597
+=======
+    m_Target: 13.367763
+    speed: 2
+    m_Value: 13.367763
+>>>>>>> LeeviBranch
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -723,10 +885,17 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 674
     y: 73
     width: 258
     height: 250
+=======
+    x: 303.2
+    y: 73.6
+    width: 919
+    height: 423
+>>>>>>> LeeviBranch
   m_ViewDataDictionary: {fileID: 0}
   m_VSyncEnabled: 0
   m_MaximizeOnPlay: 0
@@ -739,10 +908,17 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
+<<<<<<< HEAD
     m_HBaseRangeMin: -129
     m_HBaseRangeMax: 129
     m_VBaseRangeMin: -116.5
     m_VBaseRangeMax: 116.5
+=======
+    m_HBaseRangeMin: -367.6
+    m_HBaseRangeMax: 367.6
+    m_VBaseRangeMin: -162.40001
+    m_VBaseRangeMax: 162.40001
+>>>>>>> LeeviBranch
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -760,25 +936,43 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 17
+<<<<<<< HEAD
       width: 258
       height: 233
     m_Scale: {x: 1, y: 1}
     m_Translation: {x: 129, y: 116.5}
+=======
+      width: 919
+      height: 406
+    m_Scale: {x: 1, y: 1}
+    m_Translation: {x: 459.5, y: 203}
+>>>>>>> LeeviBranch
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
+<<<<<<< HEAD
       x: -129
       y: -116.5
       width: 258
       height: 233
+=======
+      x: -459.5
+      y: -203
+      width: 919
+      height: 406
+>>>>>>> LeeviBranch
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_TargetTexture: {fileID: 0}
   m_CurrentColorSpace: 0
+<<<<<<< HEAD
   m_LastWindowPixelSize: {x: 258, y: 250}
+=======
+  m_LastWindowPixelSize: {x: 1148.75, y: 528.75}
+>>>>>>> LeeviBranch
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
@@ -804,8 +998,15 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 623
     y: 342
     width: 309
     height: 309
+=======
+    x: 0
+    y: 515.2
+    width: 1224
+    height: 270
+>>>>>>> LeeviBranch
   m_ViewDataDictionary: {fileID: 0}
