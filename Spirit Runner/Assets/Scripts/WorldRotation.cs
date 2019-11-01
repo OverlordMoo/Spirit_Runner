@@ -14,17 +14,14 @@ public class WorldRotation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.parent.GetComponent<PlayerMovement>().hawkPicked == false)
+        //sideways movement by rotating the level
+        if (Input.GetKeyDown("d"))
         {
-            //sideways movement by rotating the level
-            if (Input.GetKeyDown("d"))
-            {
-                transform.Rotate(0, -rotateAngle, 0);
-            }
-            if (Input.GetKeyDown("a"))
-            {
-                transform.Rotate(0, rotateAngle, 0);
-            }
+            transform.Rotate(0, -rotateAngle,0);
+        }
+        if (Input.GetKeyDown("a"))
+        {
+            transform.Rotate(0, rotateAngle,0);
         }
     }
  
