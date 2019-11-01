@@ -13,6 +13,9 @@ public class ShapeShifting : MonoBehaviour
     public float bluetimeLimit;
     public float blacktimeLimit;
     public float collectibleTime;
+    public float redRecharge;
+    public float blueRecharge;
+    public float blackRecharge;
     public float cooldown;
 
     public bool RedOn;

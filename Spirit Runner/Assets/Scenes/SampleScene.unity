@@ -721,7 +721,7 @@ MonoBehaviour:
   incrementGrowth: 0
 <<<<<<< HEAD
   flying: 0
-  flyTime: 1
+  flyTime: 4
   flyHeight: 3
   takeOffSpeed: 4
   hawkPicked: 0

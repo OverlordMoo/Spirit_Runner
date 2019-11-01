@@ -20,7 +20,6 @@ public class PlayerMovement : MonoBehaviour
     public float takeOffSpeed;
     public bool hawkPicked;
     public Vector3 flyPos;
-    public Vector3 landPos;
     
 =======
     public SceneManager sceneManager;
@@ -48,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
         
         flying = true;
         
-        flyPos = new Vector3(transform.position.x, transform.position.y + flyHeight , transform.position.z);
+        flyPos = new Vector3(transform.position.x, transform.position.y + flyHeight , transform.position.z + 1);
         PlayerRigidBody.useGravity = false;
         
         while (transform.position.y < flyPos.y)
@@ -57,12 +56,6 @@ public class PlayerMovement : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         yield return new WaitForSeconds(flyTime);
-        landPos = new Vector3(transform.position.x, transform.position.y - flyHeight, transform.position.z);
-        while (transform.position.y > landPos.y)
-        {
-            transform.Translate(Vector3.down * takeOffSpeed * Time.deltaTime);
-            yield return new WaitForEndOfFrame();
-        }
         PlayerRigidBody.useGravity = true;
         flying = false;
         
@@ -84,7 +77,6 @@ public class PlayerMovement : MonoBehaviour
         playerColl = PlayerBody.GetComponent<PlayerCollisionDetection>();
 <<<<<<< HEAD
         playerAnim = PlayerBody.GetComponent<Animator>();
-        hawkPicked = false;
         
 =======
 >>>>>>> LeeviBranch
