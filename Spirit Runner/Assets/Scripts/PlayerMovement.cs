@@ -21,6 +21,15 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody PlayerRigidBody;
     public PlayerCollisionDetection playerColl;
 
+    public bool flying;
+    public float flyTime;
+    public float flyHeight;
+    public float takeOffSpeed;
+    public bool hawkPicked;
+    public Vector3 flyPos;
+    public Vector3 landPos;
+
+
     IEnumerator Slide()
     {
         playerColl.SetSlideTrue();
@@ -28,6 +37,32 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(slideTime);
         playerColl.SetSlideFalse();
         PlayerBody.transform.localScale += new Vector3(0, 0.3f, 0);
+
+    }
+
+    IEnumerator Fly()
+    {
+
+        flying = true;
+
+        flyPos = new Vector3(transform.position.x, transform.position.y + flyHeight, transform.position.z);
+        PlayerRigidBody.useGravity = false;
+
+        while (transform.position.y < flyPos.y)
+        {
+            transform.Translate(Vector3.up * takeOffSpeed * Time.deltaTime);
+            yield return new WaitForEndOfFrame();
+        }
+        yield return new WaitForSeconds(flyTime);
+        landPos = new Vector3(transform.position.x, transform.position.y - flyHeight, transform.position.z);
+        while (transform.position.y > landPos.y)
+        {
+            transform.Translate(Vector3.down * takeOffSpeed * Time.deltaTime);
+            yield return new WaitForEndOfFrame();
+        }
+        PlayerRigidBody.useGravity = true;
+        flying = false;
+
 
     }
 
@@ -84,6 +119,15 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.Log("slide");
             StartCoroutine(Slide());
+        }
+        if (hawkPicked == true)
+        {
+            if (flying == false)
+            {
+                StartCoroutine(Fly());
+                hawkPicked = false;
+            }
+
         }
         //speed increase
         speed += Time.deltaTime * incrementGrowth;
