@@ -398,7 +398,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 4e-45}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -719,20 +719,18 @@ MonoBehaviour:
   jumping: 0
   playerAnim: {fileID: 1385875942}
   incrementGrowth: 0
-<<<<<<< HEAD
-  flying: 0
-  flyTime: 4
-  flyHeight: 3
-  takeOffSpeed: 4
-  hawkPicked: 0
-  flyPos: {x: 0, y: 0, z: 0}
-=======
   exitTime: 1
->>>>>>> LeeviBranch
   movement: {x: 0, y: 0, z: 0}
   PlayerBody: {fileID: 133448972}
   PlayerRigidBody: {fileID: 0}
   playerColl: {fileID: 0}
+  flying: 0
+  flyTime: 2
+  flyHeight: 3
+  takeOffSpeed: 4
+  hawkPicked: 0
+  flyPos: {x: 0, y: 0, z: 0}
+  landPos: {x: 0, y: 0, z: 0}
 --- !u!114 &1817297961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -754,10 +752,7 @@ MonoBehaviour:
   bluetimeLimit: 2
   blacktimeLimit: 2
   collectibleTime: 1
-  redRecharge: 0
-  blueRecharge: 0
-  blackRecharge: 0
-  cooldown: 4
+  cooldown: 2
   RedOn: 0
   redFinished: 0
   blueFinished: 0
@@ -776,16 +771,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ybot
-      objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 5311d675c65ffd749b60c5e7989e1e70,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: c67541ce98998be488e60f96e6d71790, type: 2}
-    - target: {fileID: -6057140222963153312, guid: 5311d675c65ffd749b60c5e7989e1e70,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 5311d675c65ffd749b60c5e7989e1e70,
         type: 3}
@@ -841,6 +826,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 5311d675c65ffd749b60c5e7989e1e70,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: c67541ce98998be488e60f96e6d71790, type: 2}
+    - target: {fileID: -6057140222963153312, guid: 5311d675c65ffd749b60c5e7989e1e70,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5311d675c65ffd749b60c5e7989e1e70, type: 3}

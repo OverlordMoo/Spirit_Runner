@@ -13,9 +13,6 @@ public class ShapeShifting : MonoBehaviour
     public float bluetimeLimit;
     public float blacktimeLimit;
     public float collectibleTime;
-    public float redRecharge;
-    public float blueRecharge;
-    public float blackRecharge;
     public float cooldown;
 
     public bool RedOn;
@@ -28,22 +25,22 @@ public class ShapeShifting : MonoBehaviour
 
     private IEnumerator redShape;
     private IEnumerator blueShape;
-  
+
+
     // Start is called before the first frame update
     void Start()
     {
-       
-        
+
+
         redFinished = true;
         blueFinished = true;
         RedOn = false;
     }
-
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("1") && RedOn == false && redFinished == true)                   //if key is pressed and no other shapes are on starts coroutine = shape
+        if (Input.GetKeyDown("1") && RedOn == false && redFinished == true)
         {
+
             if (BlueOn == true)
             {
                 StopCoroutine(blueShape);
@@ -54,8 +51,9 @@ public class ShapeShifting : MonoBehaviour
             StartCoroutine(CoolDown("red"));
 
         }
-        else if(Input.GetKeyDown("2") && BlueOn == false && blueFinished == true)               //if key is pressed and no other shapes are on starts coroutine = shape
+        else if (Input.GetKeyDown("2") && BlueOn == false && blueFinished == true)
         {
+
             if (RedOn == true)
             {
                 StopCoroutine(redShape);
@@ -71,9 +69,11 @@ public class ShapeShifting : MonoBehaviour
         //}
     }
 
+
     IEnumerator ToRedShape()                                                                //coroutine for shape(names wil change)
     {
         RedOn = true;                                                                       //red shape activated
+
         ShapeOn = true;
         redFinished = false;
         player.material = materialRed;                                                      //sets player objects material to material red
@@ -82,16 +82,17 @@ public class ShapeShifting : MonoBehaviour
         {
             redtimeLimit += collectibleTime;
             yield return new WaitForSeconds(collectibleTime);                               // adds exra second to shape duration 
-            collectiblePicked = false;                                                      
+            collectiblePicked = false;
         }
+        //red shape not active
         if (BlueOn == false && BlackOn == false)
         {
             player.material = normalMaterial;                                                   // material back to normal, normal shape
             ShapeOn = false;
         }
         RedOn = false;
-        
     }
+
     IEnumerator ToBlueShape()
     {
         BlueOn = true;
@@ -99,39 +100,21 @@ public class ShapeShifting : MonoBehaviour
         blueFinished = false;
         player.material = materialBlue;
         yield return new WaitForSeconds(bluetimeLimit);                                         //same as the above just different colour
-        if(collectiblePicked == true)
+        if (collectiblePicked == true)
         {
             bluetimeLimit += collectibleTime;
             yield return new WaitForSeconds(collectibleTime);
             collectiblePicked = false;
         }
+
         if (RedOn == false && BlackOn == false)
         {
             player.material = normalMaterial;
             ShapeOn = false;
         }
         BlueOn = false;
-        
+    }
 
-    }
-    IEnumerator ToBlackShape()
-    {
-        BlackOn = true;
-        ShapeOn = true;
-        player.material = materialBlack;
-        yield return new WaitForSeconds(blacktimeLimit);                                        //same as red different colour
-        if (collectiblePicked == true)
-        {
-            blacktimeLimit += collectibleTime;
-            yield return new WaitForSeconds(collectibleTime);
-            
-            collectiblePicked = false;
-        }
-        player.material = normalMaterial;
-        ShapeOn = false;
-        BlackOn = false;
-      
-    }
     IEnumerator CoolDown(string _color)
     {
 

@@ -13,23 +13,22 @@ public class PlayerMovement : MonoBehaviour
     public Animator playerAnim; //player body animator
     public float incrementGrowth;
 
-<<<<<<< HEAD
+    public SceneManager sceneManager;
+    public float exitTime; //the time between player death and "gameover scene"
+
+    public Vector3 movement;
+    public GameObject PlayerBody;
+    public Rigidbody PlayerRigidBody;
+    public PlayerCollisionDetection playerColl;
+
     public bool flying;
     public float flyTime;
     public float flyHeight;
     public float takeOffSpeed;
     public bool hawkPicked;
     public Vector3 flyPos;
-    
-=======
-    public SceneManager sceneManager;
-    public float exitTime; //the time between player death and "gameover scene"
->>>>>>> LeeviBranch
+    public Vector3 landPos;
 
-    public Vector3 movement;
-    public GameObject PlayerBody;
-    public Rigidbody PlayerRigidBody;
-    public PlayerCollisionDetection playerColl;
 
     IEnumerator Slide()
     {
@@ -41,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-<<<<<<< HEAD
+
     IEnumerator Fly()
     {
         
@@ -60,13 +59,40 @@ public class PlayerMovement : MonoBehaviour
         flying = false;
         
         
-=======
+
+    IEnumerator Fly()
+    {
+
+        flying = true;
+
+        flyPos = new Vector3(transform.position.x, transform.position.y + flyHeight, transform.position.z);
+        PlayerRigidBody.useGravity = false;
+
+        while (transform.position.y < flyPos.y)
+        {
+            transform.Translate(Vector3.up * takeOffSpeed * Time.deltaTime);
+            yield return new WaitForEndOfFrame();
+        }
+        yield return new WaitForSeconds(flyTime);
+        landPos = new Vector3(transform.position.x, transform.position.y - flyHeight, transform.position.z);
+        while (transform.position.y > landPos.y)
+        {
+            transform.Translate(Vector3.down * takeOffSpeed * Time.deltaTime);
+            yield return new WaitForEndOfFrame();
+        }
+        PlayerRigidBody.useGravity = true;
+        flying = false;
+
+
+    }
+
+
     IEnumerator GameOver()
     {
         yield return new WaitForSeconds(exitTime);
         SceneManager.LoadScene(1);
 
->>>>>>> LeeviBranch
+
     }
 
     // Start is called before the first frame update
@@ -75,11 +101,6 @@ public class PlayerMovement : MonoBehaviour
         movement = new Vector3(0,0,1);
         PlayerRigidBody = PlayerBody.GetComponent<Rigidbody>();
         playerColl = PlayerBody.GetComponent<PlayerCollisionDetection>();
-<<<<<<< HEAD
-        playerAnim = PlayerBody.GetComponent<Animator>();
-        
-=======
->>>>>>> LeeviBranch
     }
 
     // Update is called once per frame
@@ -121,14 +142,13 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("slide");
             StartCoroutine(Slide());
         }
-        if(hawkPicked == true)
+        if (hawkPicked == true)
         {
-            if (flying == false )
+            if (flying == false)
             {
                 StartCoroutine(Fly());
                 hawkPicked = false;
             }
-            
         }
         //speed increase
         speed += Time.deltaTime * incrementGrowth;
