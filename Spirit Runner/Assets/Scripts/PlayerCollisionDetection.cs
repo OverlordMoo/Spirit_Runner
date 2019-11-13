@@ -6,6 +6,8 @@ public class PlayerCollisionDetection : MonoBehaviour
 {
     public bool sliding;
     public Collider PlayerColl;
+
+    public bool editing = false;
     //notifies parent on collision
 
     private void Start()
@@ -28,17 +30,23 @@ public class PlayerCollisionDetection : MonoBehaviour
         {
             Physics.IgnoreCollision(collision.collider, PlayerColl);
         }
-        if (collision.other.CompareTag("Wall") || collision.other.CompareTag("Fence") && sliding==false)
+        if (collision.other.CompareTag("Wall") || collision.other.CompareTag("Fence") && sliding == false)
         {
-            transform.parent.GetComponent<PlayerMovement>().WallCollisionDetected(this);
+            if (editing)
+                transform.parent.GetComponent<PlayerMovement>().WallCollisionDetected(this);
+            else
+                transform.parent.GetComponent<TouchControler>().WallCollisionDetected(this);
         }
         if (collision.other.CompareTag("Base"))
         {
-            transform.parent.GetComponent<PlayerMovement>().JumpLanded(this);
+            if (editing)
+                transform.parent.GetComponent<PlayerMovement>().JumpLanded(this);
+            else
+                transform.parent.GetComponent<TouchControler>().JumpLanded(this);
         }
-        if(collision.other.CompareTag("RedEnemy"))                                              //Tag is for demo. See if hit red enemy.
+        if (collision.other.CompareTag("RedEnemy"))                                              //Tag is for demo. See if hit red enemy.
         {
-            if(transform.parent.GetComponent<ShapeShifting>().RedOn == true)                    //check if red shape is active from ShapeShifting.cs
+            if (transform.parent.GetComponent<ShapeShifting>().RedOn == true)                    //check if red shape is active from ShapeShifting.cs
             {
                 Destroy(collision.gameObject, 0);                                               //if red active destroy enemy
             }

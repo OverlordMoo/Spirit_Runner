@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -10,12 +11,24 @@ public class PlayerMovement : MonoBehaviour
     public float slideTime;
     public bool jumping = false;
     public Animator playerAnim; //player body animator
-    public float incrementGrowth; 
+    public float incrementGrowth;
+
+    public SceneManager sceneManager;
+    public float exitTime; //the time between player death and "gameover scene"
 
     public Vector3 movement;
     public GameObject PlayerBody;
     public Rigidbody PlayerRigidBody;
     public PlayerCollisionDetection playerColl;
+
+    public bool flying;
+    public float flyTime;
+    public float flyHeight;
+    public float takeOffSpeed;
+    public bool hawkPicked;
+    public Vector3 flyPos;
+    public Vector3 landPos;
+
 
     IEnumerator Slide()
     {
@@ -27,18 +40,58 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    IEnumerator Fly()
+    {
+
+        flying = true;
+
+        flyPos = new Vector3(transform.position.x, transform.position.y + flyHeight, transform.position.z);
+        PlayerRigidBody.useGravity = false;
+
+        while (transform.position.y < flyPos.y)
+        {
+            transform.Translate(Vector3.up * takeOffSpeed * Time.deltaTime);
+            yield return new WaitForEndOfFrame();
+        }
+        yield return new WaitForSeconds(flyTime);
+        landPos = new Vector3(transform.position.x, transform.position.y - flyHeight, transform.position.z);
+        while (transform.position.y > landPos.y)
+        {
+            transform.Translate(Vector3.down * takeOffSpeed * Time.deltaTime);
+            yield return new WaitForEndOfFrame();
+        }
+        PlayerRigidBody.useGravity = true;
+        flying = false;
+
+
+    }
+
+    IEnumerator GameOver()
+    {
+        yield return new WaitForSeconds(exitTime);
+        SceneManager.LoadScene(1);
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         movement = new Vector3(0,0,1);
         PlayerRigidBody = PlayerBody.GetComponent<Rigidbody>();
         playerColl = PlayerBody.GetComponent<PlayerCollisionDetection>();
-        playerAnim = PlayerBody.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (PlayerRigidBody.velocity.y>=0)
+        {
+            playerAnim.SetBool("Going_up", true);
+        }
+        if (PlayerRigidBody.velocity.y <= 0)
+        {
+            playerAnim.SetBool("Going_up", false);
+        }
         //constant forward movement
         if (jumping==false)
         {
@@ -47,16 +100,34 @@ public class PlayerMovement : MonoBehaviour
         //jump
         if (Input.GetKeyDown(KeyCode.Space)&&jumping==false)
         {
+            playerAnim.SetTrigger("Jump_start");
             jumping = true;
             Debug.Log("Hypättiin");
             PlayerRigidBody.AddForce(Vector3.up * jumpForceUp, ForceMode.Impulse);
             PlayerRigidBody.AddForce(Vector3.forward * jumpForceFwd, ForceMode.Impulse);
+        }
+        if (Input.GetKeyDown("d"))
+        {
+            playerAnim.SetTrigger("Strafe");
+        }
+        if (Input.GetKeyDown("a"))
+        {
+            playerAnim.SetTrigger("Strafe_Left");
         }
         //slide
         if (Input.GetKeyDown("s") && jumping == false)
         {
             Debug.Log("slide");
             StartCoroutine(Slide());
+        }
+        if (hawkPicked == true)
+        {
+            if (flying == false)
+            {
+                StartCoroutine(Fly());
+                hawkPicked = false;
+            }
+
         }
         //speed increase
         speed += Time.deltaTime * incrementGrowth;
@@ -69,10 +140,12 @@ public class PlayerMovement : MonoBehaviour
     {
         speed = 0;
         Debug.Log("Osuttiin seinään");
+        StartCoroutine(GameOver());
     }
     public void JumpLanded(PlayerCollisionDetection childScript)
     {
         Debug.Log("Osuttiin maahan");
         jumping = false;
+        playerAnim.ResetTrigger("Jump_start");
     }
 }
