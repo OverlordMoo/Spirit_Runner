@@ -28,7 +28,7 @@ public class PlayerCollisionDetection : MonoBehaviour
         {
             Physics.IgnoreCollision(collision.collider, PlayerColl);
         }
-        if (collision.other.CompareTag("Wall") || collision.other.CompareTag("Fence") && sliding==false)
+        if (collision.other.CompareTag("Wall") || collision.other.CompareTag("RedEnemy") || collision.other.CompareTag("BlueEnemy") || collision.other.CompareTag("Fence") && sliding==false)
         {
             transform.parent.GetComponent<PlayerMovement>().WallCollisionDetected(this);
         }
