@@ -38,7 +38,11 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
+<<<<<<< Updated upstream
   m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+=======
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+>>>>>>> Stashed changes
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -744,10 +748,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1385875943}
-  materialRed: {fileID: 2100000, guid: fe0b40773103fda4fad305b7be17b6ad, type: 2}
-  materialBlue: {fileID: 2100000, guid: 29372c3ba7c4295459e0afd202bea180, type: 2}
-  materialBlack: {fileID: 2100000, guid: d546c109e89acb740a1853c0fa6d7ad3, type: 2}
-  normalMaterial: {fileID: 2100000, guid: 3fad8feb46d081e4f892101e192a9354, type: 2}
   redtimeLimit: 2
   bluetimeLimit: 2
   blacktimeLimit: 2
@@ -760,7 +760,12 @@ MonoBehaviour:
   BlackOn: 0
   ShapeOn: 0
   collectiblePicked: 0
+<<<<<<< Updated upstream
 --- !u!1001 &1920837283
+=======
+  AnimHandler: {fileID: 0}
+--- !u!1001 &2012892883
+>>>>>>> Stashed changes
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
