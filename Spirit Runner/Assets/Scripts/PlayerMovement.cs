@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public bool jumping = false;
     public Animator playerAnim; //player body animator
     public float incrementGrowth;
+   
 
     public SceneManager sceneManager;
     public float exitTime; //the time between player death and "gameover scene"
@@ -32,11 +33,13 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator Slide()
     {
+        playerAnim.SetBool("Sliding", true);
         playerColl.SetSlideTrue();
         PlayerBody.transform.localScale -= new Vector3(0, 0.3f, 0);
         yield return new WaitForSeconds(slideTime);
         playerColl.SetSlideFalse();
         PlayerBody.transform.localScale += new Vector3(0, 0.3f, 0);
+        playerAnim.SetBool("Sliding", false);
 
     }
 
@@ -65,7 +68,44 @@ public class PlayerMovement : MonoBehaviour
             PlayerRigidBody.useGravity = true;
             flying = false;
 
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+        movement = new Vector3(0,0,1);
+        PlayerRigidBody = PlayerBody.GetComponent<Rigidbody>();
+        playerColl = PlayerBody.GetComponent<PlayerCollisionDetection>();
 
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (PlayerRigidBody.velocity.y>=0)
+        {
+            playerAnim.SetBool("Going_up", true);
+        }
+        if (PlayerRigidBody.velocity.y <= 0)
+        {
+            playerAnim.SetBool("Going_up", false);
+        }
+        //constant forward movement
+        if (jumping==false)
+        {
+            transform.Translate(movement * speed * Time.deltaTime);
+        }
+        //jump
+        if (Input.GetKeyDown(KeyCode.Space)&&jumping==false && flying == false)
+        {
+            playerAnim.SetTrigger("Jump_start");
+            jumping = true;
+            Debug.Log("Hypättiin");
+            PlayerRigidBody.AddForce(Vector3.up * jumpForceUp, ForceMode.Impulse);
+            PlayerRigidBody.AddForce(Vector3.forward * jumpForceFwd, ForceMode.Impulse);
+        }
+        if (Input.GetKeyDown("d"))
+        {
+            playerAnim.SetTrigger("Strafe");
         }
 
 
@@ -76,13 +116,12 @@ public class PlayerMovement : MonoBehaviour
 
 
         }
-
-        // Start is called before the first frame update
-        void Start()
+        //slide
+        if (Input.GetKeyDown("s") && jumping == false && flying == false)
         {
-            movement = new Vector3(0, 0, 1);
-            PlayerRigidBody = PlayerBody.GetComponent<Rigidbody>();
-            playerColl = PlayerBody.GetComponent<PlayerCollisionDetection>();
+            
+            Debug.Log("slide");
+            StartCoroutine(Slide());
         }
 
         // Update is called once per frame

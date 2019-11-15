@@ -5,10 +5,7 @@ using UnityEngine;
 public class ShapeShifting : MonoBehaviour
 {
     public Renderer player;
-    public Material materialRed;
-    public Material materialBlue;
-    public Material materialBlack;
-    public Material normalMaterial;
+
     public float redtimeLimit;
     public float bluetimeLimit;
     public float blacktimeLimit;
@@ -26,12 +23,14 @@ public class ShapeShifting : MonoBehaviour
     private IEnumerator redShape;
     private IEnumerator blueShape;
 
+    public AnimationHandler AnimHandler;
+
 
     // Start is called before the first frame update
     void Start()
     {
 
-
+        AnimHandler = transform.GetComponentInParent<AnimationHandler>();
         redFinished = true;
         blueFinished = true;
         RedOn = false;
@@ -73,10 +72,9 @@ public class ShapeShifting : MonoBehaviour
     IEnumerator ToRedShape()                                                                //coroutine for shape(names wil change)
     {
         RedOn = true;                                                                       //red shape activated
-
         ShapeOn = true;
+
         redFinished = false;
-        player.material = materialRed;                                                      //sets player objects material to material red
         yield return new WaitForSeconds(redtimeLimit);                                      //waits certain amount of time
         if (collectiblePicked == true)                                                      //if collectible is picked up
         {
@@ -87,7 +85,6 @@ public class ShapeShifting : MonoBehaviour
         //red shape not active
         if (BlueOn == false && BlackOn == false)
         {
-            player.material = normalMaterial;                                                   // material back to normal, normal shape
             ShapeOn = false;
         }
         RedOn = false;
@@ -98,7 +95,6 @@ public class ShapeShifting : MonoBehaviour
         BlueOn = true;
         ShapeOn = true;
         blueFinished = false;
-        player.material = materialBlue;
         yield return new WaitForSeconds(bluetimeLimit);                                         //same as the above just different colour
         if (collectiblePicked == true)
         {
@@ -109,7 +105,6 @@ public class ShapeShifting : MonoBehaviour
 
         if (RedOn == false && BlackOn == false)
         {
-            player.material = normalMaterial;
             ShapeOn = false;
         }
         BlueOn = false;
