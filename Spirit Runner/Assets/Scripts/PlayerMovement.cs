@@ -45,69 +45,39 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-        IEnumerator Fly()
-        {
-
-            flying = true;
-
-            flyPos = new Vector3(transform.position.x, transform.position.y + flyHeight, transform.position.z);
-            PlayerRigidBody.useGravity = false;
-
-            while (transform.position.y < flyPos.y)
-            {
-                transform.Translate(Vector3.up * takeOffSpeed * Time.deltaTime);
-                yield return new WaitForEndOfFrame();
-            }
-            yield return new WaitForSeconds(flyTime);
-            landPos = new Vector3(transform.position.x, transform.position.y - flyHeight, transform.position.z);
-            while (transform.position.y > landPos.y)
-            {
-                transform.Translate(Vector3.down * takeOffSpeed * Time.deltaTime);
-                yield return new WaitForEndOfFrame();
-            }
-            PlayerRigidBody.useGravity = true;
-            flying = false;
-
-    // Start is called before the first frame update
-    void Start()
+    IEnumerator Fly()
     {
-        
-        movement = new Vector3(0,0,1);
-        PlayerRigidBody = PlayerBody.GetComponent<Rigidbody>();
-        playerColl = PlayerBody.GetComponent<PlayerCollisionDetection>();
 
+        flying = true;
+
+        flyPos = new Vector3(transform.position.x, transform.position.y + flyHeight, transform.position.z);
+        PlayerRigidBody.useGravity = false;
+
+        while (transform.position.y < flyPos.y)
+        {
+            transform.Translate(Vector3.up * takeOffSpeed * Time.deltaTime);
+            yield return new WaitForEndOfFrame();
+        }
+        yield return new WaitForSeconds(flyTime);
+        landPos = new Vector3(transform.position.x, transform.position.y - flyHeight, transform.position.z);
+        while (transform.position.y > landPos.y)
+        {
+            transform.Translate(Vector3.down * takeOffSpeed * Time.deltaTime);
+            yield return new WaitForEndOfFrame();
+        }
+        PlayerRigidBody.useGravity = true;
+        flying = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (PlayerRigidBody.velocity.y>=0)
+    // Start is called before the first frame update
+        void Start()
         {
-            playerAnim.SetBool("Going_up", true);
-        }
-        if (PlayerRigidBody.velocity.y <= 0)
-        {
-            playerAnim.SetBool("Going_up", false);
-        }
-        //constant forward movement
-        if (jumping==false)
-        {
-            transform.Translate(movement * speed * Time.deltaTime);
-        }
-        //jump
-        if (Input.GetKeyDown(KeyCode.Space)&&jumping==false && flying == false)
-        {
-            playerAnim.SetTrigger("Jump_start");
-            jumping = true;
-            Debug.Log("Hypättiin");
-            PlayerRigidBody.AddForce(Vector3.up * jumpForceUp, ForceMode.Impulse);
-            PlayerRigidBody.AddForce(Vector3.forward * jumpForceFwd, ForceMode.Impulse);
-        }
-        if (Input.GetKeyDown("d"))
-        {
-            playerAnim.SetTrigger("Strafe");
-        }
+        
+            movement = new Vector3(0,0,1);
+            PlayerRigidBody = PlayerBody.GetComponent<Rigidbody>();
+            playerColl = PlayerBody.GetComponent<PlayerCollisionDetection>();
 
+        }
 
         IEnumerator GameOver()
         {
@@ -115,13 +85,6 @@ public class PlayerMovement : MonoBehaviour
             SceneManager.LoadScene(1);
 
 
-        }
-        //slide
-        if (Input.GetKeyDown("s") && jumping == false && flying == false)
-        {
-            
-            Debug.Log("slide");
-            StartCoroutine(Slide());
         }
 
         // Update is called once per frame
