@@ -4,25 +4,31 @@ using UnityEngine;
 
 public class WorldRotation : MonoBehaviour
 {
+    public TouchControler input;
     public float rotateAngle = 45;
     // Start is called before the first frame update
     void Start()
     {
-       
+
     }
 
     // Update is called once per frame
     void Update()
     {
         //sideways movement by rotating the level
-        if (Input.GetKeyDown("d"))
+        if (Input.GetKeyDown("d") || input.turnRight == true)
         {
-            transform.Rotate(0, -rotateAngle,0);
+            Debug.Log("turning right");
+            transform.Rotate(0, -rotateAngle, 0);
+            input.turnRight = false;
+            
         }
-        if (Input.GetKeyDown("a"))
+        else if (Input.GetKeyDown("a") || input.turnLeft == true)
         {
-            transform.Rotate(0, rotateAngle,0);
+            Debug.Log("turning left");
+            transform.Rotate(0, rotateAngle, 0);
+            input.turnLeft = false;
+
         }
     }
- 
 }

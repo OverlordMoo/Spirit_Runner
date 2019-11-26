@@ -12,8 +12,6 @@ public class PlayerMovement : MonoBehaviour
     public bool jumping = false;
     public Animator playerAnim; //player body animator
     public float incrementGrowth;
-   
-
     public SceneManager sceneManager;
     public float exitTime; //the time between player death and "gameover scene"
 
@@ -76,6 +74,39 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    IEnumerator Fly()
+    {
+
+        flying = true;
+
+        flyPos = new Vector3(transform.position.x, transform.position.y + flyHeight, transform.position.z);
+        PlayerRigidBody.useGravity = false;
+
+        while (transform.position.y < flyPos.y)
+        {
+            transform.Translate(Vector3.up * takeOffSpeed * Time.deltaTime);
+            yield return new WaitForEndOfFrame();
+        }
+        yield return new WaitForSeconds(flyTime);
+        landPos = new Vector3(transform.position.x, transform.position.y - flyHeight, transform.position.z);
+        while (transform.position.y > landPos.y)
+        {
+            transform.Translate(Vector3.down * takeOffSpeed * Time.deltaTime);
+            yield return new WaitForEndOfFrame();
+        }
+        PlayerRigidBody.useGravity = true;
+        flying = false;
+
+
+    }
+
+    IEnumerator GameOver()
+    {
+        yield return new WaitForSeconds(exitTime);
+        SceneManager.LoadScene(1);
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -83,7 +114,6 @@ public class PlayerMovement : MonoBehaviour
         movement = new Vector3(0,0,1);
         PlayerRigidBody = PlayerBody.GetComponent<Rigidbody>();
         playerColl = PlayerBody.GetComponent<PlayerCollisionDetection>();
-
     }
 
     // Update is called once per frame

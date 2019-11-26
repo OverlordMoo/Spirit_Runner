@@ -5,7 +5,6 @@ using UnityEngine;
 public class ShapeShifting : MonoBehaviour
 {
     public Renderer player;
-
     public float redtimeLimit;
     public float bluetimeLimit;
     public float blacktimeLimit;
@@ -23,14 +22,11 @@ public class ShapeShifting : MonoBehaviour
     private IEnumerator redShape;
     private IEnumerator blueShape;
 
-    public AnimationHandler AnimHandler;
-
 
     // Start is called before the first frame update
     void Start()
     {
 
-        AnimHandler = transform.GetComponentInParent<AnimationHandler>();
         redFinished = true;
         blueFinished = true;
         RedOn = false;
@@ -69,7 +65,6 @@ public class ShapeShifting : MonoBehaviour
     {
         RedOn = true;                                                                       //red shape activated
         ShapeOn = true;
-
         redFinished = false;
         yield return new WaitForSeconds(redtimeLimit);                                      //waits certain amount of time
         if (collectiblePicked == true)                                                      //if collectible is picked up
@@ -101,6 +96,7 @@ public class ShapeShifting : MonoBehaviour
 
         if (RedOn == false && BlackOn == false)
         {
+            
             ShapeOn = false;
         }
         BlueOn = false;
@@ -115,5 +111,28 @@ public class ShapeShifting : MonoBehaviour
         if (_color == "blue")
             blueFinished = true;
 
+    }
+
+    public void RedButton()
+    {
+        if (BlueOn == true)
+        {
+            StopCoroutine(blueShape);
+            BlueOn = false;
+        }
+        redShape = ToRedShape();
+        StartCoroutine(redShape);
+        StartCoroutine(CoolDown("red"));
+    }
+    public void BlueButton()
+    {
+        if (RedOn == true)
+        {
+            StopCoroutine(redShape);
+            RedOn = false;
+        }
+        blueShape = ToBlueShape();
+        StartCoroutine(blueShape);
+        StartCoroutine(CoolDown("blue"));
     }
 }
