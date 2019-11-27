@@ -40,7 +40,7 @@ public class MenuScript : MonoBehaviour
 
     public void ExitGame()
     {
-        if (settings)
+        if (sett)
         {
             Debug.Log("Exiting Settings");
             sett = false;

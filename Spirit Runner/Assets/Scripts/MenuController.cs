@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MenuScript : MonoBehaviour
+public class MenuController : MonoBehaviour
 {
     public Animator anim;
     public GameObject mainMenu;
@@ -40,7 +40,7 @@ public class MenuScript : MonoBehaviour
 
     public void ExitGame()
     {
-        if (settings)
+        if (sett)
         {
             Debug.Log("Exiting Settings");
             sett = false;
