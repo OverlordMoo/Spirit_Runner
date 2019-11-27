@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 18
-  productGUID: 5be3eaf5389cafc499741ba8b61d6e64
+  productGUID: 9377bda8bcd84d54aaecfc498f2ae14d
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: Spirit Runner
+  productName: Spirit Runner1
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -631,10 +631,7 @@ PlayerSettings:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
-    Build: 0
-    Collab: 0
-    ErrorHub: 0
-    Hub: 0
+    Collab: 1
     UNet: 1
   luminIcon:
     m_Name: 
@@ -655,10 +652,10 @@ PlayerSettings:
   facebookXfbml: 0
   facebookFrictionlessRequests: 1
   apiCompatibilityLevel: 6
-  cloudProjectId: 8dee3a9a-2769-48f5-8f20-3b4f3fd165d9
+  cloudProjectId: 9c241010-9106-48c2-933f-8af6b029bb17
   framebufferDepthMemorylessMode: 0
-  projectName: Spirit Runner
-  organizationId: spiritrunner
+  projectName: SpiritRunner1.1
+  organizationId: spiritrunner1-1
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4153714171507734251}
   - component: {fileID: 4971960481179127005}
   - component: {fileID: 1712347369736876068}
-  - component: {fileID: 8997701427220581375}
   - component: {fileID: 4026987564257205426}
   m_Layer: 0
   m_Name: PieceEx 3
@@ -112,19 +111,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &8997701427220581375
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1152830043088454904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b97ddaedb78f3a4aa14500243e368bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotateAngle: 45
 --- !u!64 &4026987564257205426
 MeshCollider:
   m_ObjectHideFlags: 0
