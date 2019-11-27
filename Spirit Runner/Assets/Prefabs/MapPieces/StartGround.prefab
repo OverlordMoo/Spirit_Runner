@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2414395920719776039}
   - component: {fileID: 6690852556579058449}
   - component: {fileID: 1145646689464569832}
-  - component: {fileID: 7276440971613369395}
   - component: {fileID: 4919065325231122617}
   m_Layer: 0
   m_Name: StartGround
@@ -80,19 +79,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &7276440971613369395
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1718951828675197748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b97ddaedb78f3a4aa14500243e368bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotateAngle: 45
 --- !u!64 &4919065325231122617
 MeshCollider:
   m_ObjectHideFlags: 0
